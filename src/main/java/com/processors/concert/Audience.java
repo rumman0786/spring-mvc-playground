@@ -14,27 +14,27 @@ import org.springframework.stereotype.Component;
 public class Audience {
 
     private final Logger logger = LoggerFactory.getLogger(Audience.class);
-//
-//    @Pointcut()
-//    public void performPointCut(){
-//    }
 
-    @Before("execution(* Performance.perform(..))")
+    @Pointcut("execution(* Performance.perform(..))")
+    public void performPointCut() {
+    }
+
+    @Before("performPointCut()")
     public void silencePhone() {
         logger.debug("Silencing phone of audience.");
     }
 
-    @Before("execution(* Performance.perform(..))")
+    @Before("performPointCut()")
     public void takeSeats() {
         logger.debug("Taking Seats Before Performance.");
     }
 
-    @AfterReturning("execution(* Performance.perform(..))")
+    @AfterReturning("performPointCut()")
     public void clap() {
         logger.debug("Clapping after successful performance.");
     }
 
-    @AfterThrowing("execution(* Performance.perform(..))")
+    @AfterThrowing("performPointCut()")
     public void demandRefund() {
         logger.debug("Demanding Refund for bad performance.");
     }

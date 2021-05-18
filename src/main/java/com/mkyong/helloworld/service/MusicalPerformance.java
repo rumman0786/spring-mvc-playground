@@ -13,6 +13,5 @@ public class MusicalPerformance implements Performance {
     @Override
     public void perform() {
         System.out.println("Singing a beautiful song.");
-//        throw new RuntimeException();
     }
 }
