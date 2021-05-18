@@ -1,7 +1,6 @@
 package com.processors.concert;
 
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -25,15 +24,18 @@ public class Audience {
         logger.debug("Silencing phone of audience.");
     }
 
-//    public void takeSeats() {
-//
-//    }
-//
-//    public void clap() {
-//
-//    }
-//
-//    public void demandRefund() {
-//
-//    }
+    @Before("execution(* Performance.perform(..))")
+    public void takeSeats() {
+        logger.debug("Taking Seats Before Performance.");
+    }
+
+    @AfterReturning("execution(* Performance.perform(..))")
+    public void clap() {
+        logger.debug("Clapping after successful performance.");
+    }
+
+    @AfterThrowing("execution(* Performance.perform(..))")
+    public void demandRefund() {
+        logger.debug("Demanding Refund for bad performance.");
+    }
 }
