@@ -24,6 +24,8 @@ public class WelcomeController {
 	@Autowired
 	private Performance musicalPerformance;
 
+	@Autowired
+	private Performance theChosenOne;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Map<String, Object> model) {
@@ -33,7 +35,8 @@ public class WelcomeController {
 		model.put("title", helloWorldService.getTitle(""));
 		model.put("msg", helloWorldService.getDesc());
 
-		musicalPerformance.perform();
+//		musicalPerformance.perform();
+		theChosenOne.perform();
 
 		return "index";
 	}

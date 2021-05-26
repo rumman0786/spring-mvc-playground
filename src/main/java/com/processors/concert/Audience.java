@@ -22,12 +22,20 @@ public class Audience {
     public void performPointCut() {
     }
 
+    @Pointcut("execution(* Performance.perform(..)) && bean(theChosenOne)")
+    public void performChosenPointCut() {
+    }
+
     public void silencePhone() {
         logger.debug("Silencing phone of audience.");
     }
 
     public void takeSeats() {
         logger.debug("Taking Seats Before Performance.");
+    }
+
+    public void keepStanding() {
+        logger.debug("Every one stands before, during and after the chosen one performs.");
     }
 
     public void clap() {
@@ -38,7 +46,7 @@ public class Audience {
         logger.debug("Demanding Refund for bad performance.");
     }
 
-    @Around("performPointCut()")
+//    @Around("performPointCut()")
     public void doAllInSingleAdvice(ProceedingJoinPoint proceedingJoinPoint) {
         silencePhone();
         takeSeats();
@@ -49,5 +57,21 @@ public class Audience {
         } catch (Throwable throwable) {
             demandRefund();
         }
+    }
+
+    @Around("performChosenPointCut()")
+    public void chosenPerformance(ProceedingJoinPoint proceedingJoinPoint) {
+        silencePhone();
+        keepStanding();
+
+        try {
+            proceedingJoinPoint.proceed();
+            clap();
+        } catch (Throwable throwable) {
+            demandRefund();
+        }
+
+        clap();
+        keepStanding();
     }
 }
