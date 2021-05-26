@@ -35,7 +35,7 @@ public class WelcomeController {
 		model.put("title", helloWorldService.getTitle(""));
 		model.put("msg", helloWorldService.getDesc());
 
-//		musicalPerformance.perform();
+		musicalPerformance.perform();
 		theChosenOne.perform();
 
 		return "index";

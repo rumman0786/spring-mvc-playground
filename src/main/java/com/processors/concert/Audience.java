@@ -46,7 +46,7 @@ public class Audience {
         logger.debug("Demanding Refund for bad performance.");
     }
 
-//    @Around("performPointCut()")
+    @Around("performPointCut()")
     public void doAllInSingleAdvice(ProceedingJoinPoint proceedingJoinPoint) {
         silencePhone();
         takeSeats();
