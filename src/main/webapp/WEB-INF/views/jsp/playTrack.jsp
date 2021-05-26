@@ -21,10 +21,10 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h1>${title}</h1>
+		<h1>Track Player</h1>
 		<p>
 			<c:if test="${not empty msg}">
-				Hello ${msg}
+				Hello User
 			</c:if>
 
 			<c:if test="${empty msg}">
@@ -40,23 +40,9 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Play Track</h2>
-			<p><a href="/playTrack">Play Now!</a></p>
+		<div class="col-md-12">
+			<h2>Track Player</h2>
+			<p>Playing Track: ${track}</p>
 			<p>
 				<a class="btn btn-default" href="#" role="button">View details</a>
 			</p>
@@ -66,7 +52,7 @@
 
 	<hr>
 	<footer>
-		<p>&copy; Mkyong.com 2015</p>
+		<p>&copy; Rumman.com 2021</p>
 	</footer>
 </div>
 
